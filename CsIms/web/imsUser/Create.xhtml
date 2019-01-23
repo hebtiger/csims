@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{user_Bundle.CreateImsUserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{imsUserController.selected.id}" title="#{user_Bundle.CreateImsUserTitle_id}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_id}"/>
+                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{imsUserController.selected.name}" title="#{user_Bundle.CreateImsUserTitle_name}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_name}"/>
+                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{imsUserController.selected.password}" title="#{user_Bundle.CreateImsUserTitle_password}" />
+                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_createTime}" for="createTime" />
+                    <h:inputText id="createTime" value="#{imsUserController.selected.createTime}" title="#{user_Bundle.CreateImsUserTitle_createTime}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_createTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_userGroup}" for="userGroup" />
+                    <h:selectOneMenu id="userGroup" value="#{imsUserController.selected.userGroup}" title="#{user_Bundle.CreateImsUserTitle_userGroup}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_userGroup}">
+                        <f:selectItems value="#{userGroupController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{imsUserController.create}" value="#{user_Bundle.CreateImsUserSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{imsUserController.prepareList}" value="#{user_Bundle.CreateImsUserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{user_Bundle.CreateImsUserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
