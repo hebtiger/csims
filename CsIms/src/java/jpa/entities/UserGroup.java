@@ -109,7 +109,8 @@ public class UserGroup implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.UserGroup[ id=" + id + " ]";
+       // return "jpa.entities.UserGroup[ id=" + id + " ]";
+       return groupName;
     }
     
 }
