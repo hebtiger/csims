@@ -8,5 +8,9 @@
             <base-name>/resources/User_Bundle</base-name>
             <var>user_Bundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/resources/MalfunctionRecord_Bundle</base-name>
+            <var>malfunctionRecord_Bundle</var>
+        </resource-bundle>
     </application>
 </faces-config>

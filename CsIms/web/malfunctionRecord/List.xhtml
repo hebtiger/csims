@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{malfunctionRecord_Bundle.ListMalfunctionRecordEmpty}" rendered="#{malfunctionRecordController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{malfunctionRecordController.items.rowCount > 0}">
+                    <h:outputText value="#{malfunctionRecordController.pagination.pageFirstItem + 1}..#{malfunctionRecordController.pagination.pageLastItem + 1}/#{malfunctionRecordController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{malfunctionRecordController.previous}" value="#{malfunctionRecord_Bundle.Previous} #{malfunctionRecordController.pagination.pageSize}" rendered="#{malfunctionRecordController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{malfunctionRecordController.next}" value="#{malfunctionRecord_Bundle.Next} #{malfunctionRecordController.pagination.pageSize}" rendered="#{malfunctionRecordController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{malfunctionRecordController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_netType}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.netType}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_occurrenceTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.occurrenceTime}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_faultLocation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.faultLocation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_malfunctionDetail}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.malfunctionDetail}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_influenceSphere}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.influenceSphere}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_malfunctionAnalysis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.malfunctionAnalysis}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_processing}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.processing}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_recoveryTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recoveryTime}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_staff}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.staff}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{malfunctionRecord_Bundle.ListMalfunctionRecordTitle_createTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.createTime}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{malfunctionRecordController.prepareView}" value="#{malfunctionRecord_Bundle.ListMalfunctionRecordViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{malfunctionRecordController.prepareEdit}" value="#{malfunctionRecord_Bundle.ListMalfunctionRecordEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{malfunctionRecordController.destroy}" value="#{malfunctionRecord_Bundle.ListMalfunctionRecordDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{malfunctionRecordController.prepareCreate}" value="#{malfunctionRecord_Bundle.ListMalfunctionRecordCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{malfunctionRecord_Bundle.ListMalfunctionRecordIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

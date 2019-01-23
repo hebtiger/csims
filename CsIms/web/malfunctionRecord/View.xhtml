@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_id}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.id}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_id}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_netType}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.netType}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_netType}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_occurrenceTime}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.occurrenceTime}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_occurrenceTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_faultLocation}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.faultLocation}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_faultLocation}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_malfunctionDetail}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.malfunctionDetail}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_malfunctionDetail}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_influenceSphere}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.influenceSphere}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_influenceSphere}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_malfunctionAnalysis}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.malfunctionAnalysis}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_malfunctionAnalysis}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_processing}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.processing}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_processing}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_recoveryTime}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.recoveryTime}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_recoveryTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_staff}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.staff}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_staff}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_remarks}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.remarks}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_remarks}"/>
+                    <h:outputText value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordLabel_createTime}"/>
+                    <h:outputText value="#{malfunctionRecordController.selected.createTime}" title="#{malfunctionRecord_Bundle.ViewMalfunctionRecordTitle_createTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{malfunctionRecordController.destroyAndView}" value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordEditLink}"/>
+                <br />
+                <h:commandLink action="#{malfunctionRecordController.prepareCreate}" value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordCreateLink}" />
+                <br />
+                <h:commandLink action="#{malfunctionRecordController.prepareList}" value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{malfunctionRecord_Bundle.ViewMalfunctionRecordIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
