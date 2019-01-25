@@ -4,8 +4,8 @@ import jpa.entities.ImsUser;
 import jsf.util.JsfUtil;
 import jsf.util.PaginationHelper;
 import jpa.session.ImsUserFacade;
-
 import java.io.Serializable;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -22,14 +22,103 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class ImsUserController implements Serializable {
 
+    private String name = "";
+    private String password = "";
+    private boolean superadmin;
+    private boolean admin;
+
     private ImsUser current;
     private DataModel items = null;
     @EJB
     private jpa.session.ImsUserFacade ejbFacade;
+   
     private PaginationHelper pagination;
+   
     private int selectedItemIndex;
 
     public ImsUserController() {
+    }
+
+    //验证用户是否登录
+    public String verifyUser() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map session = fc.getExternalContext().getSessionMap();
+        for (ImsUser user : ejbFacade.findAll()) {
+            if (name.equals(user.getName()) && password.equals(user.getPassword())) {
+                session.put("name", name);
+                System.out.println("登录用户属于" + user.getUserGroup());
+                if (user.getUserGroup().getGroupName().equalsIgnoreCase("superadmin")) {
+                    // System.out.println("登录用户属于"+user.getUserGroup());
+                    setSuperadmin(true);
+                }
+                if (user.getUserGroup().getGroupName().equalsIgnoreCase("admin")) {
+                    setAdmin(true);
+
+                }
+                return "index";
+            }
+        }
+        return "login";
+    }
+
+    /**
+     * @return the superadmin
+     * 是否为超级管理员
+     */
+    public boolean isSuperadmin() {
+        return superadmin;
+    }
+
+    /**
+     * @param superadmin the superadmin to set
+     * 设置为超级管理员
+     */
+    public void setSuperadmin(boolean superadmin) {
+        this.superadmin = superadmin;
+    }
+
+    /**
+     * @return the admin
+     * 是否为管理员
+     */
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    /**
+     * @param admin the admin to set
+     * 设置为管理员
+     */
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public ImsUser getSelected() {
@@ -82,10 +171,10 @@ public class ImsUserController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/User_Bundle").getString("ImsUserCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/Bundle").getString("ImsUserCreated"));
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/resources/User_Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/resources/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -99,10 +188,10 @@ public class ImsUserController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/User_Bundle").getString("ImsUserUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/Bundle").getString("ImsUserUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/resources/User_Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/resources/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -132,9 +221,9 @@ public class ImsUserController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/User_Bundle").getString("ImsUserDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/Bundle").getString("ImsUserDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/resources/User_Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/resources/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 
