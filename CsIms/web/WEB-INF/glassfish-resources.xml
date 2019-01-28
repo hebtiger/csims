@@ -7,7 +7,10 @@
         <property name="databaseName" value="csims"/>
         <property name="User" value="root"/>
         <property name="Password" value="tiger"/>
-        <property name="URL" value="jdbc:mysql://localhost:3306/csims?zeroDateTimeBehavior=convertToNull"/>
+        <!-- 原来是<property name="URL" value="jdbc:mysql://localhost:3306/csims?zeroDateTimeBehavior=convertToNull"/>
+        要编码为UTF8才能正确的输入中文
+        -->
+        <property name="URL" value="jdbc:mysql://localhost:3306/csims?characterEncoding=utf-8"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/csims" object-type="user" pool-name="mysql_csims_rootPool"/>
