@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+
+            <h:outputText value="按名称查询"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="按名称查询" for="queryName" />
+                    <h:inputText id="queryName" value="#{userGroupController.queryName}" title="名称" required="true" requiredMessage="#{user_Bundle.CreateUserGroupRequiredMessage_groupName}"/>
+
+                    <h:commandButton action="#{userGroupController.queryByNameResult()}" value="提交"/>
+                </h:panelGrid>
+                <h:panelGroup rendered="#{userGroupController.items.rowCount > 0}">
+                    <h:outputText value="#{userGroupController.pagination.pageFirstItem + 1}..#{userGroupController.pagination.pageLastItem + 1}/#{userGroupController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{userGroupController.previous}" value="#{user_Bundle.Previous} #{userGroupController.pagination.pageSize}" rendered="#{userGroupController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{userGroupController.next}" value="#{user_Bundle.Next} #{userGroupController.pagination.pageSize}" rendered="#{userGroupController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{userGroupController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{user_Bundle.ListUserGroupTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{user_Bundle.ListUserGroupTitle_groupName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.groupName}"/>
+                        </h:column>
+                       
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

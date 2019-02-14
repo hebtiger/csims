@@ -28,6 +28,8 @@ public class UserGroupController implements Serializable {
     private jpa.session.UserGroupFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    //查询字段名称
+    private String queryName;
 
     public UserGroupController() {
     }
@@ -55,8 +57,16 @@ public class UserGroupController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+
+                    if (queryName == null || queryName.isEmpty()) {
+                        items = new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    } //通过名称进行查询，返回数据模型
+                    else {
+                        items = new ListDataModel(getFacade().findByNameFromUserGroup(queryName));
+                    }
+                    return items;
                 }
+
             };
         }
         return pagination;
@@ -160,6 +170,15 @@ public class UserGroupController implements Serializable {
         return items;
     }
 
+    public String queryByNameResult() {
+        //清空items的内容
+        recreateModel();
+        //重新获得items内容
+        items = getItems();
+        return "Query";
+    }
+//重置数据模型
+
     private void recreateModel() {
         items = null;
     }
@@ -232,4 +251,21 @@ public class UserGroupController implements Serializable {
 
     }
 
+    /**
+     * @return the queryName
+     */
+    public String getQueryName() {
+        return queryName;
+    }
+
+    /**
+     * @param queryName the queryName to set
+     */
+    public void setQueryName(String queryName) {
+        this.queryName = queryName;
+    }
+
+    /**
+     * @return the queryItems
+     */
 }

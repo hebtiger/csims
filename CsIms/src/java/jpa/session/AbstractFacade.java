@@ -7,6 +7,9 @@ package jpa.session;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -41,6 +44,14 @@ public abstract class AbstractFacade<T> {
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+    //根据名称模糊查询，但root.get("name")使这段代码的通用性降低，因为其他表中的名称字段未必是name
+    public List<T> findByNameFromUserGroup(String name) {
+        CriteriaBuilder criteriaBuilder=getEntityManager().getCriteriaBuilder();
+        javax.persistence.criteria.CriteriaQuery cq = criteriaBuilder.createQuery();
+        Root root=cq.from(entityClass);
+        cq.select(root).where(criteriaBuilder.like(root.get("groupName"), "%"+name+"%"));
         return getEntityManager().createQuery(cq).getResultList();
     }
 

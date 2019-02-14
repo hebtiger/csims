@@ -45,7 +45,7 @@ public class MalfunctionRecordController implements Serializable {
     }
 
     public PaginationHelper getPagination() {
-        if (pagination == null) {
+                if (pagination == null) {
             pagination = new PaginationHelper(10) {
 
                 @Override

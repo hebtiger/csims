@@ -43,7 +43,7 @@ public class ImsUserController implements Serializable {
     public String verifyUser() {
         FacesContext fc = FacesContext.getCurrentInstance();
         Map session = fc.getExternalContext().getSessionMap();
-        for (ImsUser user : ejbFacade.findAll()) {
+        for (ImsUser user : getFacade().findAll()) {
             if (name.equals(user.getName()) && password.equals(user.getPassword())) {
                 session.put("name", name);
                 System.out.println("登录用户属于" + user.getUserGroup());

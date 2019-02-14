@@ -3,19 +3,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>首页</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
+      
+      
+        <h:link outcome="/imsUser/List" value="用户管理"/>
         <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces 欢迎使用页" />
+        <h:link outcome="/userGroup/List" value="用户组管理"/>
         <br />
-        <h:link outcome="/imsUser/List" value="Show All ImsUser Items"/>
-        <br />
-        <h:link outcome="/userGroup/List" value="Show All UserGroup Items"/>
-        <br />
-        <h:link outcome="/malfunctionRecord/List" value="Show All MalfunctionRecord Items"/>
+        <h:link outcome="/malfunctionRecord/List" value="故障记录"/>
     </h:body>
 
 
