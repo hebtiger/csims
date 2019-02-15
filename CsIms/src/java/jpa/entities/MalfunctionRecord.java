@@ -97,18 +97,16 @@ public class MalfunctionRecord implements Serializable {
     @Column(name = "remarks")
     private String remarks;
     @Basic(optional = false)
-    @NotNull
+    
     @Column(name = "create_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
 
     public MalfunctionRecord() {
     }
-
     public MalfunctionRecord(Integer id) {
         this.id = id;
     }
-
     public MalfunctionRecord(Integer id, String netType, Date occurrenceTime, String faultLocation, String malfunctionDetail, String influenceSphere, Date recoveryTime, String staff, Date createTime) {
         this.id = id;
         this.netType = netType;

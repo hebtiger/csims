@@ -15,16 +15,12 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{imsUserController.selected.id}" title="#{user_Bundle.CreateImsUserTitle_id}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_id}"/>
+                 
                     <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_name}" for="name" />
                     <h:inputText id="name" value="#{imsUserController.selected.name}" title="#{user_Bundle.CreateImsUserTitle_name}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_name}"/>
                     <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_password}" for="password" />
                     <h:inputText id="password" value="#{imsUserController.selected.password}" title="#{user_Bundle.CreateImsUserTitle_password}" />
-                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_createTime}" for="createTime" />
-                    <h:inputText id="createTime" value="#{imsUserController.selected.createTime}" title="#{user_Bundle.CreateImsUserTitle_createTime}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_createTime}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
+                   
                     <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_userGroup}" for="userGroup" />
                     <h:selectOneMenu id="userGroup" value="#{imsUserController.selected.userGroup}" title="#{user_Bundle.CreateImsUserTitle_userGroup}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_userGroup}">
                         <f:selectItems value="#{userGroupController.itemsAvailableSelectOne}"/>

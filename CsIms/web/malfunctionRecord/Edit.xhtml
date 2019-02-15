@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -15,14 +16,11 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{malfunctionRecordController.selected.id}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_id}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_id}"/>
+
                     <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_netType}" for="netType" />
                     <h:inputText id="netType" value="#{malfunctionRecordController.selected.netType}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_netType}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_netType}"/>
                     <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_occurrenceTime}" for="occurrenceTime" />
-                    <h:inputText id="occurrenceTime" value="#{malfunctionRecordController.selected.occurrenceTime}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_occurrenceTime}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_occurrenceTime}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
+                    <p:calendar id="occurrenceTime" value="#{malfunctionRecordController.selected.occurrenceTime}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_occurrenceTime}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_occurrenceTime}" pattern="MM/dd/yyyy HH:mm:ss"/>
                     <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_faultLocation}" for="faultLocation" />
                     <h:inputText id="faultLocation" value="#{malfunctionRecordController.selected.faultLocation}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_faultLocation}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_faultLocation}"/>
                     <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_malfunctionDetail}" for="malfunctionDetail" />
@@ -34,17 +32,13 @@
                     <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_processing}" for="processing" />
                     <h:inputTextarea rows="4" cols="30" id="processing" value="#{malfunctionRecordController.selected.processing}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_processing}" />
                     <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_recoveryTime}" for="recoveryTime" />
-                    <h:inputText id="recoveryTime" value="#{malfunctionRecordController.selected.recoveryTime}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_recoveryTime}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_recoveryTime}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
+                    <p:calendar id="recoveryTime" value="#{malfunctionRecordController.selected.recoveryTime}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_recoveryTime}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_recoveryTime}" pattern="MM/dd/yyyy HH:mm:ss" />
+
                     <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_staff}" for="staff" />
                     <h:inputText id="staff" value="#{malfunctionRecordController.selected.staff}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_staff}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_staff}"/>
                     <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_remarks}" for="remarks" />
                     <h:inputTextarea rows="4" cols="30" id="remarks" value="#{malfunctionRecordController.selected.remarks}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_remarks}" />
-                    <h:outputLabel value="#{malfunctionRecord_Bundle.EditMalfunctionRecordLabel_createTime}" for="createTime" />
-                    <h:inputText id="createTime" value="#{malfunctionRecordController.selected.createTime}" title="#{malfunctionRecord_Bundle.EditMalfunctionRecordTitle_createTime}" required="true" requiredMessage="#{malfunctionRecord_Bundle.EditMalfunctionRecordRequiredMessage_createTime}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
+
                 </h:panelGrid>
                 <h:commandLink action="#{malfunctionRecordController.update}" value="#{malfunctionRecord_Bundle.EditMalfunctionRecordSaveLink}"/>
                 <br />
