@@ -8,23 +8,14 @@
     <h:body>
         <h3>输入用户名和密码：</h3>
         <h:form>
-                <table border="0">
-            
-            <tbody>
-                <tr>
-                    <td>用户名：</td>
-                    <td><h:inputText value="#{imsUserController.name}"/></td>
-                </tr>
-                <tr>
-                    <td>密码：</td>
-                    <td><h:inputSecret value="#{imsUserController.password}" /></td>
-                </tr>
-               
-            </tbody>
-        </table>
-             <h:commandButton value="提交" action="#{imsUserController.verifyUser}"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="用户名：" for="userName"/>
+                <h:inputText id="userName" value="#{imsUserController.name}"/>
+                <h:outputLabel value="密码：" for="userPsd"/>
+                <h:inputSecret id="userPsd" value="#{imsUserController.password}"/>
+            </h:panelGrid>
+            <h:commandButton value="提交" action="#{imsUserController.verifyUser}"/>
         </h:form>
-
     </h:body>
 </html>
 

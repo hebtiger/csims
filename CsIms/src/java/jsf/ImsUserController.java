@@ -31,9 +31,9 @@ public class ImsUserController implements Serializable {
     private DataModel items = null;
     @EJB
     private jpa.session.ImsUserFacade ejbFacade;
-   
+
     private PaginationHelper pagination;
-   
+
     private int selectedItemIndex;
 
     public ImsUserController() {
@@ -62,32 +62,28 @@ public class ImsUserController implements Serializable {
     }
 
     /**
-     * @return the superadmin
-     * 是否为超级管理员
+     * @return the superadmin 是否为超级管理员
      */
     public boolean isSuperadmin() {
         return superadmin;
     }
 
     /**
-     * @param superadmin the superadmin to set
-     * 设置为超级管理员
+     * @param superadmin the superadmin to set 设置为超级管理员
      */
     public void setSuperadmin(boolean superadmin) {
         this.superadmin = superadmin;
     }
 
     /**
-     * @return the admin
-     * 是否为管理员
+     * @return the admin 是否为管理员
      */
     public boolean isAdmin() {
         return admin;
     }
 
     /**
-     * @param admin the admin to set
-     * 设置为管理员
+     * @param admin the admin to set 设置为管理员
      */
     public void setAdmin(boolean admin) {
         this.admin = admin;
@@ -202,20 +198,24 @@ public class ImsUserController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        //必须要加上faces-redirect=true。否则删除后一旦刷新，将继续删除
+        return "List?faces-redirect = true";
     }
 
     public String destroyAndView() {
         performDestroy();
         recreateModel();
         updateCurrentItem();
-        if (selectedItemIndex >= 0) {
-            return "View";
-        } else {
-            // all items were removed - go back to list
-            recreateModel();
-            return "List";
-        }
+        //去掉判断语句，在查看界面删除后直接返回LIST页面，并进行重定向，否则刷新会继续删除
+        recreateModel();
+        return "List?faces-redirect=true";
+//        if (selectedItemIndex >= 0) {
+//            return "View";
+//        } else {
+//            // all items were removed - go back to list
+//            recreateModel();
+//            return "List";
+//        }
     }
 
     private void performDestroy() {

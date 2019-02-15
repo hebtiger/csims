@@ -113,20 +113,23 @@ public class MalfunctionRecordController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "List?faces-redirect = true";
     }
 
     public String destroyAndView() {
         performDestroy();
         recreateModel();
         updateCurrentItem();
-        if (selectedItemIndex >= 0) {
-            return "View";
-        } else {
-            // all items were removed - go back to list
-            recreateModel();
-            return "List";
-        }
+        //去掉判断语句，在查看界面删除后直接返回LIST页面，并进行重定向，否则刷新会继续删除
+        recreateModel();
+        return "List?faces-redirect=true";
+//        if (selectedItemIndex >= 0) {
+//            return "View";
+//        } else {
+//            // all items were removed - go back to list
+//            recreateModel();
+//            return "List";
+//        }
     }
 
     private void performDestroy() {
