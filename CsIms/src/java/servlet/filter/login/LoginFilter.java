@@ -15,6 +15,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import jpa.entities.ImsUser;
 
 /**
  *
@@ -48,19 +49,23 @@ public class LoginFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
-        boolean isLoggedIn=(session!=null)&&(session.getAttribute("name")!=null);
-        
-       
+        boolean isLoggedIn = (session != null) && (session.getAttribute("user") != null);
 
-//        System.out.println(session.getAttribute("name"));// 如果为空该语句要报警
+        //     System.out.println("登录名是"+session.getAttribute("name"));// 如果为空该语句要报警
         if (!isLoggedIn) {
-//System.out.println("SESSION值为空");
-            res.sendRedirect(req.getContextPath() + "/faces/login.xhtml");
-        } else {
-            System.out.println("SESSION值不为空");
-             
-            chain.doFilter(request, response);
+            System.out.println("用户未登录，在此转向");
+            // res.sendRedirect(req.getContextPath() + "/faces/login.xhtml");
+
+            //如果使用response.sendRedirect(),会报session为空的异常，所以使用RequestDispather.forward()
+            req.getRequestDispatcher("/faces/login.xhtml").forward(req, res);
+            //如果登录，但用户权限是normal，并且访问的不是他权限内的页面，就让他去index页面
+        } else if (((ImsUser) session.getAttribute("user")).getUserGroup().getGroupName().equals("normal") && req.getRequestURI().startsWith("/CsIms/faces/imsUser")) {
+            //System.out.println("组别是" + ((ImsUser) session.getAttribute("user")).getUserGroup().getGroupName());
+            System.out.println(req.getRequestURI().startsWith("/CsIms/faces/imsUser"));
+            req.getRequestDispatcher("/faces/index.xhtml").forward(req, res);
         }
+        chain.doFilter(request, response);
+
     }
 
     public FilterConfig getFilterConfig() {

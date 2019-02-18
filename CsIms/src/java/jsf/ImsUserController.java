@@ -45,7 +45,8 @@ public class ImsUserController implements Serializable {
         Map session = fc.getExternalContext().getSessionMap();
         for (ImsUser user : getFacade().findAll()) {
             if (name.equals(user.getName()) && password.equals(user.getPassword())) {
-                session.put("name", name);
+              //  session.put("name", name);
+              session.put("user", user);
                 System.out.println("登录用户属于" + user.getUserGroup());
                 if (user.getUserGroup().getGroupName().equalsIgnoreCase("superadmin")) {
                     // System.out.println("登录用户属于"+user.getUserGroup());
@@ -53,6 +54,7 @@ public class ImsUserController implements Serializable {
                 }
                 if (user.getUserGroup().getGroupName().equalsIgnoreCase("admin")) {
                     setAdmin(true);
+                   // session.put("group", user.getUserGroup().getGroupName());
 
                 }
                 return "index";
