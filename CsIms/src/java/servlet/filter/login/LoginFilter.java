@@ -59,7 +59,7 @@ public class LoginFilter implements Filter {
             //如果使用response.sendRedirect(),会报session为空的异常，所以使用RequestDispather.forward()
             req.getRequestDispatcher("/faces/login.xhtml").forward(req, res);
             //如果登录，但用户权限是normal，并且访问的不是他权限内的页面，就让他去index页面
-        } else if (((ImsUser) session.getAttribute("user")).getUserGroup().getGroupName().equals("normal") && req.getRequestURI().startsWith("/CsIms/faces/imsUser")) {
+        } else if (((ImsUser) session.getAttribute("user")).getUserGroup().getGroupName().equals("normal") && (req.getRequestURI().startsWith("/CsIms/faces/imsUser")||req.getRequestURI().startsWith("/CsIms/faces/userGroup"))) {
             //System.out.println("组别是" + ((ImsUser) session.getAttribute("user")).getUserGroup().getGroupName());
             System.out.println(req.getRequestURI().startsWith("/CsIms/faces/imsUser"));
             req.getRequestDispatcher("/faces/index.xhtml").forward(req, res);
