@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_id}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.id}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_id}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_rateLevel}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.rateLevel}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_rateLevel}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_sourceSite}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.sourceSite}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_sourceSite}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_sourceServicePort}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.sourceServicePort}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_sourceServicePort}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_lineProperty}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.lineProperty}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_lineProperty}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_sourcePort}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.sourcePort}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_sourcePort}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_sourceDirection}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.sourceDirection}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_sourceDirection}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_frequency}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.frequency}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_frequency}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_terminalDirection}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.terminalDirection}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_terminalDirection}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_terminalPort}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.terminalPort}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_terminalPort}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_terminalServicePort}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.terminalServicePort}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_terminalServicePort}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_terminalSite}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.terminalSite}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_terminalSite}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_useState}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.useState}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_useState}"/>
+                    <h:outputText value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoLabel_remarks}"/>
+                    <h:outputText value="#{otnServiceInfoController.selected.remarks}" title="#{otnServiceInfo_Bundle.ViewOtnServiceInfoTitle_remarks}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{otnServiceInfoController.destroyAndView}" value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoEditLink}"/>
+                <br />
+                <h:commandLink action="#{otnServiceInfoController.prepareCreate}" value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoCreateLink}" />
+                <br />
+                <h:commandLink action="#{otnServiceInfoController.prepareList}" value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{otnServiceInfo_Bundle.ViewOtnServiceInfoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

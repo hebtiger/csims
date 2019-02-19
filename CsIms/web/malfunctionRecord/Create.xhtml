@@ -18,7 +18,10 @@
                 <h:panelGrid columns="2">
                   
                     <h:outputLabel value="#{malfunctionRecord_Bundle.CreateMalfunctionRecordLabel_netType}" for="netType" />
-                    <h:inputText id="netType" value="#{malfunctionRecordController.selected.netType}" title="#{malfunctionRecord_Bundle.CreateMalfunctionRecordTitle_netType}" required="true" requiredMessage="#{malfunctionRecord_Bundle.CreateMalfunctionRecordRequiredMessage_netType}"/>
+                    <h:selectOneMenu value="#{malfunctionRecordController.selected.netType}">
+                        <f:selectItem itemValue="OTN" itemLabel="OTN"/>
+                        <f:selectItem itemValue="MSTP" itemLabel="MSTP"/>
+                    </h:selectOneMenu>
                     <h:outputLabel value="#{malfunctionRecord_Bundle.CreateMalfunctionRecordLabel_occurrenceTime}" for="occurrenceTime" />
                      <p:calendar id="occurrenceTime" value="#{malfunctionRecordController.selected.occurrenceTime}" title="#{malfunctionRecord_Bundle.CreateMalfunctionRecordTitle_occurrenceTime}" required="true" requiredMessage="#{malfunctionRecord_Bundle.CreateMalfunctionRecordRequiredMessage_occurrenceTime}" pattern="MM/dd/yyyy HH:mm:ss" timeOnly="false" />
                     <h:outputLabel value="#{malfunctionRecord_Bundle.CreateMalfunctionRecordLabel_faultLocation}" for="faultLocation" />

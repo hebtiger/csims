@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_rateLevel}" for="rateLevel" />
+                    <h:inputText id="rateLevel" value="#{otnServiceInfoController.selected.rateLevel}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_rateLevel}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_rateLevel}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_sourceSite}" for="sourceSite" />
+                    <h:inputText id="sourceSite" value="#{otnServiceInfoController.selected.sourceSite}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_sourceSite}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_sourceSite}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_sourceServicePort}" for="sourceServicePort" />
+                    <h:inputText id="sourceServicePort" value="#{otnServiceInfoController.selected.sourceServicePort}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_sourceServicePort}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_sourceServicePort}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_lineProperty}" for="lineProperty" />
+                    <h:inputText id="lineProperty" value="#{otnServiceInfoController.selected.lineProperty}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_lineProperty}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_lineProperty}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_sourcePort}" for="sourcePort" />
+                    <h:inputText id="sourcePort" value="#{otnServiceInfoController.selected.sourcePort}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_sourcePort}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_sourcePort}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_sourceDirection}" for="sourceDirection" />
+                    <h:inputText id="sourceDirection" value="#{otnServiceInfoController.selected.sourceDirection}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_sourceDirection}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_sourceDirection}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_frequency}" for="frequency" />
+                    <h:inputText id="frequency" value="#{otnServiceInfoController.selected.frequency}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_frequency}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_frequency}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_terminalDirection}" for="terminalDirection" />
+                    <h:inputText id="terminalDirection" value="#{otnServiceInfoController.selected.terminalDirection}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_terminalDirection}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_terminalDirection}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_terminalPort}" for="terminalPort" />
+                    <h:inputText id="terminalPort" value="#{otnServiceInfoController.selected.terminalPort}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_terminalPort}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_terminalPort}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_terminalServicePort}" for="terminalServicePort" />
+                    <h:inputText id="terminalServicePort" value="#{otnServiceInfoController.selected.terminalServicePort}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_terminalServicePort}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_terminalServicePort}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_terminalSite}" for="terminalSite" />
+                    <h:inputText id="terminalSite" value="#{otnServiceInfoController.selected.terminalSite}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_terminalSite}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_terminalSite}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_useState}" for="useState" />
+                    <h:inputText id="useState" value="#{otnServiceInfoController.selected.useState}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_useState}" required="true" requiredMessage="#{otnServiceInfo_Bundle.CreateOtnServiceInfoRequiredMessage_useState}"/>
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{otnServiceInfoController.selected.remarks}" title="#{otnServiceInfo_Bundle.CreateOtnServiceInfoTitle_remarks}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{otnServiceInfoController.create}" value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{otnServiceInfoController.prepareList}" value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{otnServiceInfo_Bundle.CreateOtnServiceInfoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
