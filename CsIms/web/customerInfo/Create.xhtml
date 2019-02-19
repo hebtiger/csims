@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{customerInfo_Bundle.CreateCustomerInfoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{customerInfo_Bundle.CreateCustomerInfoLabel_customerName}" for="customerName" />
+                    <h:inputText id="customerName" value="#{customerInfoController.selected.customerName}" title="#{customerInfo_Bundle.CreateCustomerInfoTitle_customerName}" required="true" requiredMessage="#{customerInfo_Bundle.CreateCustomerInfoRequiredMessage_customerName}"/>
+                    <h:outputLabel value="#{customerInfo_Bundle.CreateCustomerInfoLabel_customerFullname}" for="customerFullname" />
+                    <h:inputText id="customerFullname" value="#{customerInfoController.selected.customerFullname}" title="#{customerInfo_Bundle.CreateCustomerInfoTitle_customerFullname}" required="true" requiredMessage="#{customerInfo_Bundle.CreateCustomerInfoRequiredMessage_customerFullname}"/>
+                    <h:outputLabel value="#{customerInfo_Bundle.CreateCustomerInfoLabel_contactStaff}" for="contactStaff" />
+                    <h:inputText id="contactStaff" value="#{customerInfoController.selected.contactStaff}" title="#{customerInfo_Bundle.CreateCustomerInfoTitle_contactStaff}" required="true" requiredMessage="#{customerInfo_Bundle.CreateCustomerInfoRequiredMessage_contactStaff}"/>
+                    <h:outputLabel value="#{customerInfo_Bundle.CreateCustomerInfoLabel_contactNumber}" for="contactNumber" />
+                    <h:inputText id="contactNumber" value="#{customerInfoController.selected.contactNumber}" title="#{customerInfo_Bundle.CreateCustomerInfoTitle_contactNumber}" required="true" requiredMessage="#{customerInfo_Bundle.CreateCustomerInfoRequiredMessage_contactNumber}"/>
+                    <h:outputLabel value="#{customerInfo_Bundle.CreateCustomerInfoLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{customerInfoController.selected.address}" title="#{customerInfo_Bundle.CreateCustomerInfoTitle_address}" required="true" requiredMessage="#{customerInfo_Bundle.CreateCustomerInfoRequiredMessage_address}"/>
+                    <h:outputLabel value="#{customerInfo_Bundle.CreateCustomerInfoLabel_customerDistrict}" for="customerDistrict" />
+                    <h:inputText id="customerDistrict" value="#{customerInfoController.selected.customerDistrict}" title="#{customerInfo_Bundle.CreateCustomerInfoTitle_customerDistrict}" required="true" requiredMessage="#{customerInfo_Bundle.CreateCustomerInfoRequiredMessage_customerDistrict}"/>
+                    <h:outputLabel value="#{customerInfo_Bundle.CreateCustomerInfoLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{customerInfoController.selected.remarks}" title="#{customerInfo_Bundle.CreateCustomerInfoTitle_remarks}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{customerInfoController.create}" value="#{customerInfo_Bundle.CreateCustomerInfoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{customerInfoController.prepareList}" value="#{customerInfo_Bundle.CreateCustomerInfoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{customerInfo_Bundle.CreateCustomerInfoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

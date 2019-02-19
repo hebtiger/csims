@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoLabel_id}"/>
+                    <h:outputText value="#{customerInfoController.selected.id}" title="#{customerInfo_Bundle.ViewCustomerInfoTitle_id}"/>
+                    <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoLabel_customerName}"/>
+                    <h:outputText value="#{customerInfoController.selected.customerName}" title="#{customerInfo_Bundle.ViewCustomerInfoTitle_customerName}"/>
+                    <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoLabel_customerFullname}"/>
+                    <h:outputText value="#{customerInfoController.selected.customerFullname}" title="#{customerInfo_Bundle.ViewCustomerInfoTitle_customerFullname}"/>
+                    <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoLabel_contactStaff}"/>
+                    <h:outputText value="#{customerInfoController.selected.contactStaff}" title="#{customerInfo_Bundle.ViewCustomerInfoTitle_contactStaff}"/>
+                    <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoLabel_contactNumber}"/>
+                    <h:outputText value="#{customerInfoController.selected.contactNumber}" title="#{customerInfo_Bundle.ViewCustomerInfoTitle_contactNumber}"/>
+                    <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoLabel_address}"/>
+                    <h:outputText value="#{customerInfoController.selected.address}" title="#{customerInfo_Bundle.ViewCustomerInfoTitle_address}"/>
+                    <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoLabel_customerDistrict}"/>
+                    <h:outputText value="#{customerInfoController.selected.customerDistrict}" title="#{customerInfo_Bundle.ViewCustomerInfoTitle_customerDistrict}"/>
+                    <h:outputText value="#{customerInfo_Bundle.ViewCustomerInfoLabel_remarks}"/>
+                    <h:outputText value="#{customerInfoController.selected.remarks}" title="#{customerInfo_Bundle.ViewCustomerInfoTitle_remarks}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{customerInfoController.destroyAndView}" value="#{customerInfo_Bundle.ViewCustomerInfoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{customerInfo_Bundle.ViewCustomerInfoEditLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="#{customerInfoController.prepareList}" value="#{customerInfo_Bundle.ViewCustomerInfoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{customerInfo_Bundle.ViewCustomerInfoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
