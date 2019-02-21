@@ -44,6 +44,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "OtnServiceInfo.findByRemarks", query = "SELECT o FROM OtnServiceInfo o WHERE o.remarks = :remarks")})
 public class OtnServiceInfo implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "net_ring")
+    private String netRing;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -272,6 +278,14 @@ public class OtnServiceInfo implements Serializable {
     @Override
     public String toString() {
         return "jpa.entities.OtnServiceInfo[ id=" + id + " ]";
+    }
+
+    public String getNetRing() {
+        return netRing;
+    }
+
+    public void setNetRing(String netRing) {
+        this.netRing = netRing;
     }
     
 }

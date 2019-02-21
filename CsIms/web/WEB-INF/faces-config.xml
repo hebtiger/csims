@@ -20,5 +20,9 @@
             <base-name>/resources/OtnServiceInfo_Bundle</base-name>
             <var>otnServiceInfo_Bundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/resources/OtnServiceInfo_Bundle</base-name>
+            <var>otnServiceInfo_Bundle</var>
+        </resource-bundle>
     </application>
 </faces-config>

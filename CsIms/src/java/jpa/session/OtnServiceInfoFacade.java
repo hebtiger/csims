@@ -5,12 +5,9 @@
  */
 package jpa.session;
 
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.Root;
 import jpa.entities.OtnServiceInfo;
 
 /**
@@ -30,16 +27,6 @@ public class OtnServiceInfoFacade extends AbstractFacade<OtnServiceInfo> {
 
     public OtnServiceInfoFacade() {
         super(OtnServiceInfo.class);
-    }
-    public List< OtnServiceInfo> findRange(int[] range) {
-       CriteriaBuilder criteriaBuilder=getEntityManager().getCriteriaBuilder();
-        javax.persistence.criteria.CriteriaQuery cq = criteriaBuilder.createQuery();
-        Root root=cq.from(OtnServiceInfo.class);
-        cq.select(root).orderBy(criteriaBuilder.asc(root.get("frequency")),criteriaBuilder.asc(root.get("lineProperty")));
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
-        q.setMaxResults(range[1] - range[0] + 1);
-        q.setFirstResult(range[0]);
-        return q.getResultList();
     }
     
 }

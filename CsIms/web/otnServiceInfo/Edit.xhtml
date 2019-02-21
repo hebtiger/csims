@@ -41,6 +41,8 @@
                     <h:inputText id="useState" value="#{otnServiceInfoController.selected.useState}" title="#{otnServiceInfo_Bundle.EditOtnServiceInfoTitle_useState}" required="true" requiredMessage="#{otnServiceInfo_Bundle.EditOtnServiceInfoRequiredMessage_useState}"/>
                     <h:outputLabel value="#{otnServiceInfo_Bundle.EditOtnServiceInfoLabel_remarks}" for="remarks" />
                     <h:inputText id="remarks" value="#{otnServiceInfoController.selected.remarks}" title="#{otnServiceInfo_Bundle.EditOtnServiceInfoTitle_remarks}" />
+                    <h:outputLabel value="#{otnServiceInfo_Bundle.EditOtnServiceInfoLabel_netRing}" for="netRing" />
+                    <h:inputText id="netRing" value="#{otnServiceInfoController.selected.netRing}" title="#{otnServiceInfo_Bundle.EditOtnServiceInfoTitle_netRing}" required="true" requiredMessage="#{otnServiceInfo_Bundle.EditOtnServiceInfoRequiredMessage_netRing}"/>
                 </h:panelGrid>
                 <h:commandLink action="#{otnServiceInfoController.update}" value="#{otnServiceInfo_Bundle.EditOtnServiceInfoSaveLink}"/>
                 <br />

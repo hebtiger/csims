@@ -12,7 +12,13 @@
 
     <h:body>
         <h1>
+
+            <h:form>
+                <h:outputText value="你好，#{imsUserController.name} " style="float: right;position: relative;font-size: small"/><br/>
+                <h:commandLink value="退出" action="#{imsUserController.logout}"  style="float: right;position: relative;font-size: small"/>
+            </h:form>
             <ui:insert name="title">默认TITLE___TIGER</ui:insert>
+
         </h1>
         <p>
             <ui:insert name="body">默认BODY__TIGER</ui:insert>

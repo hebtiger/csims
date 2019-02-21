@@ -120,8 +120,8 @@ public class OtnServiceInfoController implements Serializable {
         performDestroy();
         recreateModel();
         updateCurrentItem();
-         recreateModel();
-            return "List";
+        recreateModel();
+        return "List";
 //        if (selectedItemIndex >= 0) {
 //            return "View";
 //        } else {

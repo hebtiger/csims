@@ -1,5 +1,6 @@
 package jsf;
 
+import java.io.IOException;
 import jpa.entities.ImsUser;
 import jsf.util.JsfUtil;
 import jsf.util.PaginationHelper;
@@ -7,6 +8,8 @@ import jpa.session.ImsUserFacade;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -17,6 +20,9 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Named("imsUserController")
 @SessionScoped
@@ -26,7 +32,7 @@ public class ImsUserController implements Serializable {
     private String password = "";
     private boolean superadmin;
     private boolean admin;
-
+    private Map session;
     private ImsUser current;
     private DataModel items = null;
     @EJB
@@ -42,11 +48,13 @@ public class ImsUserController implements Serializable {
     //验证用户是否登录
     public String verifyUser() {
         FacesContext fc = FacesContext.getCurrentInstance();
-        Map session = fc.getExternalContext().getSessionMap();
+        session = fc.getExternalContext().getSessionMap();
+        // session=(HttpSession)fc.getExternalContext().getSession(false);
         for (ImsUser user : getFacade().findAll()) {
             if (name.equals(user.getName()) && password.equals(user.getPassword())) {
-              //  session.put("name", name);
-              session.put("user", user);
+                //  session.put("name", name);
+                session.put("user", user);
+                //session.setAttribute("user", user);
                 System.out.println("登录用户属于" + user.getUserGroup());
                 if (user.getUserGroup().getGroupName().equalsIgnoreCase("superadmin")) {
                     // System.out.println("登录用户属于"+user.getUserGroup());
@@ -54,13 +62,26 @@ public class ImsUserController implements Serializable {
                 }
                 if (user.getUserGroup().getGroupName().equalsIgnoreCase("admin")) {
                     setAdmin(true);
-                   // session.put("group", user.getUserGroup().getGroupName());
+                    // session.put("group", user.getUserGroup().getGroupName());
 
                 }
                 return "index";
             }
         }
         return "login";
+    }
+
+    public void logout() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpServletRequest req=(HttpServletRequest)fc.getExternalContext().getRequest();
+        HttpServletResponse res=(HttpServletResponse)fc.getExternalContext().getResponse();
+        session.remove("user");
+        try {
+            res.sendRedirect(req.getContextPath() + "/faces/login.xhtml");
+            //  return "login";
+        } catch (IOException ex) {
+            Logger.getLogger(ImsUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -201,8 +222,8 @@ public class ImsUserController implements Serializable {
         recreatePagination();
         recreateModel();
         //必须要加上faces-redirect=true。否则删除后一旦刷新，将继续删除
-      return "List?faces-redirect = true";
-     //  return "List";
+        return "List?faces-redirect = true";
+        //  return "List";
     }
 
     public String destroyAndView() {
@@ -212,7 +233,7 @@ public class ImsUserController implements Serializable {
         //去掉判断语句，在查看界面删除后直接返回LIST页面，并进行重定向，否则刷新会继续删除
         recreateModel();
         return "List?faces-redirect=true";
-      //  return "List";
+        //  return "List";
 //        if (selectedItemIndex >= 0) {
 //            return "View";
 //        } else {
