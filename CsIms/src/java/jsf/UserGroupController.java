@@ -74,7 +74,7 @@ public class UserGroupController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "List?faces-redirect=true";
     }
 
     public String prepareView() {
@@ -123,7 +123,7 @@ public class UserGroupController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "List?faces-redirect=true";
     }
 
     public String destroyAndView() {
@@ -131,7 +131,7 @@ public class UserGroupController implements Serializable {
         recreateModel();
         updateCurrentItem();
         recreateModel();
-        return "List";
+        return "List?faces-redirect=true";
 //        if (selectedItemIndex >= 0) {
 //            return "View";
 //        } else {

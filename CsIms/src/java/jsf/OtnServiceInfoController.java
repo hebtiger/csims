@@ -187,7 +187,7 @@ private DataModel netRing1=null;
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "List?faces-redirect=true";
     }
 
     public String destroyAndView() {
@@ -195,7 +195,7 @@ private DataModel netRing1=null;
         recreateModel();
         updateCurrentItem();
         recreateModel();
-        return "List";
+        return "List?faces-redirect=true";
 //        if (selectedItemIndex >= 0) {
 //            return "View";
 //        } else {
