@@ -172,7 +172,7 @@ public class ImsUserController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List?faces-redirect = true";
+        return "List";
     }
 
     public String prepareView() {
@@ -221,8 +221,7 @@ public class ImsUserController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        //必须要加上faces-redirect=true。否则删除后一旦刷新，将继续删除
-        return "List?faces-redirect = true";
+        return "List";
         //  return "List";
     }
 
@@ -232,7 +231,7 @@ public class ImsUserController implements Serializable {
         updateCurrentItem();
         //去掉判断语句，在查看界面删除后直接返回LIST页面，并进行重定向，否则刷新会继续删除
         recreateModel();
-        return "List?faces-redirect=true";
+        return "List";
         //  return "List";
 //        if (selectedItemIndex >= 0) {
 //            return "View";

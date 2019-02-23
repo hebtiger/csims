@@ -17,8 +17,15 @@
                 <h:panelGrid columns="2">
 
                     <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{imsUserController.selected.name}" title="#{user_Bundle.CreateImsUserTitle_name}" required="true" requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_name}"/>
-                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_password}" for="password" />
+                    <h:inputText id="name"
+                                 value="#{imsUserController.selected.name}"
+                                 title="#{user_Bundle.CreateImsUserTitle_name}" 
+                                 required="true" 
+                                 requiredMessage="#{user_Bundle.CreateImsUserRequiredMessage_name}"
+                                 />
+                    <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_password}"
+                                   for="password" 
+                                   />
                     <h:inputText id="password" value="#{imsUserController.selected.password}" title="#{user_Bundle.CreateImsUserTitle_password}" />
 
                     <h:outputLabel value="#{user_Bundle.CreateImsUserLabel_userGroup}" for="userGroup" />
