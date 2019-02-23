@@ -83,7 +83,9 @@ public class MalfunctionRecordController implements Serializable {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/MalfunctionRecord_Bundle").getString("MalfunctionRecordCreated"));
-            return prepareCreate();
+            //return prepareCreate();
+            current = new MalfunctionRecord();
+            return "List?faces-redirect=true";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/resources/MalfunctionRecord_Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -113,7 +115,7 @@ public class MalfunctionRecordController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "List?faces-redirect=true";
     }
 
     public String destroyAndView() {

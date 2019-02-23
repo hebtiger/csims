@@ -6,6 +6,7 @@ import jsf.util.PaginationHelper;
 import jpa.session.OtnServiceInfoFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -28,8 +29,81 @@ public class OtnServiceInfoController implements Serializable {
     private jpa.session.OtnServiceInfoFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-
+private DataModel netRing1=null;
+    private DataModel netRing2=null;
+    private DataModel netRing3=null;
+    private List allRings=null;
     public OtnServiceInfoController() {
+    }
+
+    /**
+     * @return the netRing1
+     */
+    public DataModel getNetRing1() {
+       if(netRing1==null){
+           return new ListDataModel(getFacade().findByNetRing("环一"));
+       }
+        return netRing1;
+    }
+
+    /**
+     * @param netRing1 the netRing1 to set
+     */
+    public void setNetRing1(DataModel netRing1) {
+        this.netRing1 = netRing1;
+    }
+
+    /**
+     * @return the netRing2
+     */
+    public DataModel getNetRing2() {
+        if(netRing2==null){
+           return new ListDataModel(getFacade().findByNetRing("环二"));
+       }
+        return netRing2;
+    }
+
+    /**
+     * @param netRing2 the netRing2 to set
+     */
+    public void setNetRing2(DataModel netRing2) {
+        this.netRing2 = netRing2;
+    }
+
+    /**
+     * @return the netRing3
+     */
+    public DataModel getNetRing3() {
+        if(netRing3==null){
+           return new ListDataModel(getFacade().findByNetRing("环三"));
+       }
+        return netRing3;
+    }
+
+    /**
+     * @param netRing3 the netRing3 to set
+     */
+    public void setNetRing3(DataModel netRing3) {
+        this.netRing3 = netRing3;
+    }
+
+    /**
+     * @return the allRings
+     */
+    public List getAllRings() {
+       if(allRings==null){
+           allRings.add(netRing1);
+           allRings.add(netRing2);
+           allRings.add(netRing3);
+       }
+       return allRings;
+    }
+
+    /**
+     * @param allRings the allRings to set
+     */
+    public void setAllRings(List allRings) {
+        this.allRings = allRings;
     }
 
     public OtnServiceInfo getSelected() {

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+        <h:form styleClass="jsfcrud_list_form">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:outputText escape="false" value="#{otnServiceInfo_Bundle.ListOtnServiceInfoEmpty}" rendered="#{otnServiceInfoController.items.rowCount == 0}"/>
+            
+            <h:panelGroup rendered="#{otnServiceInfoController.items.rowCount > 0}">
+                <h:outputText value="#{otnServiceInfoController.pagination.pageFirstItem + 1}..#{otnServiceInfoController.pagination.pageLastItem + 1}/#{otnServiceInfoController.pagination.itemsCount}"/>&nbsp;
+                <h:commandLink action="#{otnServiceInfoController.previous}" value="#{otnServiceInfo_Bundle.Previous} #{otnServiceInfoController.pagination.pageSize}" rendered="#{otnServiceInfoController.pagination.hasPreviousPage}"/>&nbsp;
+                <h:commandLink action="#{otnServiceInfoController.next}" value="#{otnServiceInfo_Bundle.Next} #{otnServiceInfoController.pagination.pageSize}" rendered="#{otnServiceInfoController.pagination.hasNextPage}"/>&nbsp;
+              
+                <h:dataTable value="#{otnServiceInfoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_id}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_rateLevel}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rateLevel}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_sourceSite}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.sourceSite}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_sourceServicePort}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.sourceServicePort}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_lineProperty}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.lineProperty}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_sourcePort}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.sourcePort}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_sourceDirection}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.sourceDirection}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_frequency}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.frequency}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_terminalDirection}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.terminalDirection}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_terminalPort}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.terminalPort}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_terminalServicePort}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.terminalServicePort}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_terminalSite}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.terminalSite}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_useState}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.useState}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_remarks}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.remarks}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{otnServiceInfo_Bundle.ListOtnServiceInfoTitle_netRing}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.netRing}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="&nbsp;"/>
+                        </f:facet>
+                        <h:commandLink action="#{otnServiceInfoController.prepareView}" value="#{otnServiceInfo_Bundle.ListOtnServiceInfoViewLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{otnServiceInfoController.prepareEdit}" value="#{otnServiceInfo_Bundle.ListOtnServiceInfoEditLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{otnServiceInfoController.destroy}" value="#{otnServiceInfo_Bundle.ListOtnServiceInfoDestroyLink}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+            <br />
+            <h:commandLink action="#{otnServiceInfoController.prepareCreate}" value="#{otnServiceInfo_Bundle.ListOtnServiceInfoCreateLink}"/>
+            <br />
+            <br />
+            <h:link outcome="/index" value="#{otnServiceInfo_Bundle.ListOtnServiceInfoIndexLink}"/>
+        </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

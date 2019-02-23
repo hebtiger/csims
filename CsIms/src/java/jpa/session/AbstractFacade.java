@@ -45,14 +45,7 @@ public abstract class AbstractFacade<T> {
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
-    //根据名称模糊查询，但root.get("name")使这段代码的通用性降低，因为其他表中的名称字段未必是name. 应该在继承类中实现
-    public List<T> findByNameFromUserGroup(String name) {
-        CriteriaBuilder criteriaBuilder=getEntityManager().getCriteriaBuilder();
-        javax.persistence.criteria.CriteriaQuery cq = criteriaBuilder.createQuery();
-        Root root=cq.from(entityClass);
-        cq.select(root).where(criteriaBuilder.like(root.get("groupName"), "%"+name+"%"));
-        return getEntityManager().createQuery(cq).getResultList();
-    }
+  
 
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
