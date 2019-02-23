@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{sparePart_Bundle.CreateSparePartTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{sparePart_Bundle.CreateSparePartLabel_partName}" for="partName" />
+                    <h:inputText id="partName" value="#{sparePartController.selected.partName}" title="#{sparePart_Bundle.CreateSparePartTitle_partName}" required="true" requiredMessage="#{sparePart_Bundle.CreateSparePartRequiredMessage_partName}"/>
+                    <h:outputLabel value="#{sparePart_Bundle.CreateSparePartLabel_partModel}" for="partModel" />
+                    <h:inputText id="partModel" value="#{sparePartController.selected.partModel}" title="#{sparePart_Bundle.CreateSparePartTitle_partModel}" required="true" requiredMessage="#{sparePart_Bundle.CreateSparePartRequiredMessage_partModel}"/>
+                    <h:outputLabel value="#{sparePart_Bundle.CreateSparePartLabel_partNumber}" for="partNumber" />
+                    <h:inputText id="partNumber" value="#{sparePartController.selected.partNumber}" title="#{sparePart_Bundle.CreateSparePartTitle_partNumber}" required="true" requiredMessage="#{sparePart_Bundle.CreateSparePartRequiredMessage_partNumber}"/>
+                    <h:outputLabel value="#{sparePart_Bundle.CreateSparePartLabel_measurement}" for="measurement" />
+                    <h:inputText id="measurement" value="#{sparePartController.selected.measurement}" title="#{sparePart_Bundle.CreateSparePartTitle_measurement}" required="true" requiredMessage="#{sparePart_Bundle.CreateSparePartRequiredMessage_measurement}"/>
+                    <h:outputLabel value="#{sparePart_Bundle.CreateSparePartLabel_depositPlace}" for="depositPlace" />
+                    <h:inputText id="depositPlace" value="#{sparePartController.selected.depositPlace}" title="#{sparePart_Bundle.CreateSparePartTitle_depositPlace}" required="true" requiredMessage="#{sparePart_Bundle.CreateSparePartRequiredMessage_depositPlace}"/>
+                    <h:outputLabel value="#{sparePart_Bundle.CreateSparePartLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{sparePartController.selected.remarks}" title="#{sparePart_Bundle.CreateSparePartTitle_remarks}" />
+                    <h:outputLabel value="#{sparePart_Bundle.CreateSparePartLabel_unitPrice}" for="unitPrice" />
+                    <h:inputText id="unitPrice" value="#{sparePartController.selected.unitPrice}" title="#{sparePart_Bundle.CreateSparePartTitle_unitPrice}" />
+                    <h:outputLabel value="#{sparePart_Bundle.CreateSparePartLabel_totalPrice}" for="totalPrice" />
+                    <h:inputText id="totalPrice" value="#{sparePartController.selected.totalPrice}" title="#{sparePart_Bundle.CreateSparePartTitle_totalPrice}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sparePartController.create}" value="#{sparePart_Bundle.CreateSparePartSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sparePartController.prepareList}" value="#{sparePart_Bundle.CreateSparePartShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{sparePart_Bundle.CreateSparePartIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

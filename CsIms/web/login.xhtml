@@ -10,7 +10,7 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel value="用户名：" for="userName"/>
-                <h:inputText id="userName" value="#{imsUserController.name}"/>
+                <h:inputText id="userName" value="#{imsUserController.name}" autocomplete="on"/>
                 <h:outputLabel value="密码：" for="userPsd"/>
                 <h:inputSecret id="userPsd" value="#{imsUserController.password}"/>
             </h:panelGrid>

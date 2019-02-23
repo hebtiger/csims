@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{sparePart_Bundle.ListSparePartTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{sparePart_Bundle.ListSparePartEmpty}" rendered="#{sparePartController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sparePartController.items.rowCount > 0}">
+                    <h:outputText value="#{sparePartController.pagination.pageFirstItem + 1}..#{sparePartController.pagination.pageLastItem + 1}/#{sparePartController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sparePartController.previous}" value="#{sparePart_Bundle.Previous} #{sparePartController.pagination.pageSize}" rendered="#{sparePartController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sparePartController.next}" value="#{sparePart_Bundle.Next} #{sparePartController.pagination.pageSize}" rendered="#{sparePartController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sparePartController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{sparePart_Bundle.ListSparePartTitle_partName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{sparePart_Bundle.ListSparePartTitle_partModel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partModel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{sparePart_Bundle.ListSparePartTitle_partNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{sparePart_Bundle.ListSparePartTitle_measurement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.measurement}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{sparePart_Bundle.ListSparePartTitle_depositPlace}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.depositPlace}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{sparePart_Bundle.ListSparePartTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{sparePart_Bundle.ListSparePartTitle_unitPrice}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unitPrice}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{sparePart_Bundle.ListSparePartTitle_totalPrice}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalPrice}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sparePartController.prepareView}" value="#{sparePart_Bundle.ListSparePartViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sparePartController.prepareEdit}" value="#{sparePart_Bundle.ListSparePartEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sparePartController.destroy}" value="#{sparePart_Bundle.ListSparePartDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sparePartController.prepareCreate}" value="#{sparePart_Bundle.ListSparePartCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{sparePart_Bundle.ListSparePartIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
