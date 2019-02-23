@@ -45,9 +45,7 @@ public class OtnNeInfo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private Integer id;
-
     private static final long serialVersionUID = 1L;
-    @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -68,7 +66,6 @@ public class OtnNeInfo implements Serializable {
     @Column(name = "ne_ver")
     private String neVer;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "create_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
