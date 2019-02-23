@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{otnNeInfo_Bundle.CreateOtnNeInfoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{otnNeInfo_Bundle.CreateOtnNeInfoLabel_neId}" for="neId" />
+                    <h:inputText id="neId" value="#{otnNeInfoController.selected.neId}" title="#{otnNeInfo_Bundle.CreateOtnNeInfoTitle_neId}" required="true" requiredMessage="#{otnNeInfo_Bundle.CreateOtnNeInfoRequiredMessage_neId}"/>
+                    <h:outputLabel value="#{otnNeInfo_Bundle.CreateOtnNeInfoLabel_neName}" for="neName" />
+                    <h:inputText id="neName" value="#{otnNeInfoController.selected.neName}" title="#{otnNeInfo_Bundle.CreateOtnNeInfoTitle_neName}" required="true" requiredMessage="#{otnNeInfo_Bundle.CreateOtnNeInfoRequiredMessage_neName}"/>
+                    <h:outputLabel value="#{otnNeInfo_Bundle.CreateOtnNeInfoLabel_neType}" for="neType" />
+                    <h:inputText id="neType" value="#{otnNeInfoController.selected.neType}" title="#{otnNeInfo_Bundle.CreateOtnNeInfoTitle_neType}" />
+                    <h:outputLabel value="#{otnNeInfo_Bundle.CreateOtnNeInfoLabel_neIp}" for="neIp" />
+                    <h:inputText id="neIp" value="#{otnNeInfoController.selected.neIp}" title="#{otnNeInfo_Bundle.CreateOtnNeInfoTitle_neIp}" />
+                    <h:outputLabel value="#{otnNeInfo_Bundle.CreateOtnNeInfoLabel_neVer}" for="neVer" />
+                    <h:inputText id="neVer" value="#{otnNeInfoController.selected.neVer}" title="#{otnNeInfo_Bundle.CreateOtnNeInfoTitle_neVer}" />
+                    <h:outputLabel value="#{otnNeInfo_Bundle.CreateOtnNeInfoLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{otnNeInfoController.selected.remarks}" title="#{otnNeInfo_Bundle.CreateOtnNeInfoTitle_remarks}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{otnNeInfoController.create}" value="#{otnNeInfo_Bundle.CreateOtnNeInfoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{otnNeInfoController.prepareList}" value="#{otnNeInfo_Bundle.CreateOtnNeInfoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{otnNeInfo_Bundle.CreateOtnNeInfoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

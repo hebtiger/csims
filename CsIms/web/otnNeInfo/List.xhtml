@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{otnNeInfo_Bundle.ListOtnNeInfoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{otnNeInfo_Bundle.ListOtnNeInfoEmpty}" rendered="#{otnNeInfoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{otnNeInfoController.items.rowCount > 0}">
+                    <h:outputText value="#{otnNeInfoController.pagination.pageFirstItem + 1}..#{otnNeInfoController.pagination.pageLastItem + 1}/#{otnNeInfoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{otnNeInfoController.previous}" value="#{otnNeInfo_Bundle.Previous} #{otnNeInfoController.pagination.pageSize}" rendered="#{otnNeInfoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{otnNeInfoController.next}" value="#{otnNeInfo_Bundle.Next} #{otnNeInfoController.pagination.pageSize}" rendered="#{otnNeInfoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{otnNeInfoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{otnNeInfo_Bundle.ListOtnNeInfoTitle_neId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.neId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{otnNeInfo_Bundle.ListOtnNeInfoTitle_neName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.neName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{otnNeInfo_Bundle.ListOtnNeInfoTitle_neType}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.neType}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{otnNeInfo_Bundle.ListOtnNeInfoTitle_neIp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.neIp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{otnNeInfo_Bundle.ListOtnNeInfoTitle_neVer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.neVer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{otnNeInfo_Bundle.ListOtnNeInfoTitle_createTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.createTime}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{otnNeInfo_Bundle.ListOtnNeInfoTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{otnNeInfoController.prepareView}" value="#{otnNeInfo_Bundle.ListOtnNeInfoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{otnNeInfoController.prepareEdit}" value="#{otnNeInfo_Bundle.ListOtnNeInfoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{otnNeInfoController.destroy}" value="#{otnNeInfo_Bundle.ListOtnNeInfoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{otnNeInfoController.prepareCreate}" value="#{otnNeInfo_Bundle.ListOtnNeInfoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{otnNeInfo_Bundle.ListOtnNeInfoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

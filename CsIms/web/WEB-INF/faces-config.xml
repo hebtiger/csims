@@ -28,5 +28,13 @@
             <base-name>/resources/SparePart_Bundle</base-name>
             <var>sparePart_Bundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/resources/OtnNeInfo_Bundle</base-name>
+            <var>otnNeInfo_Bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/resources/OtnNeInfo_Bundle</base-name>
+            <var>otnNeInfo_Bundle</var>
+        </resource-bundle>
     </application>
 </faces-config>
