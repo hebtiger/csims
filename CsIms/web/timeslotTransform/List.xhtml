@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{timeSlotTransform_Bundle.ListTimeslotTransformTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:link outcome="/index" value="#{timeSlotTransform_Bundle.ListTimeslotTransformIndexLink}"/>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{timeSlotTransform_Bundle.ListTimeslotTransformEmpty}" rendered="#{timeslotTransformController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{timeslotTransformController.items.rowCount > 0}">
+                    <p:dataTable value="#{timeslotTransformController.items}" var="item">
+                        <p:column headerText="#{timeSlotTransform_Bundle.ListTimeslotTransformTitle_zte}" sortBy="#{item.zte}">
+                            <h:outputText value="#{item.zte}"/>
+                        </p:column>
+                        <p:column headerText="#{timeSlotTransform_Bundle.ListTimeslotTransformTitle_huawei}" sortBy="#{item.huawei}">
+                            <h:outputText value="#{item.huawei}"/>
+                        </p:column>
+                        <p:column headerText="#{timeSlotTransform_Bundle.ListTimeslotTransformTitle_tug3}" >
+                            <h:outputText value="#{item.tug3}"/>
+                        </p:column>
+                        <p:column headerText="#{timeSlotTransform_Bundle.ListTimeslotTransformTitle_tug2}" >
+                            <h:outputText value="#{item.tug2}"/>
+                        </p:column>
+                        <p:column headerText="#{timeSlotTransform_Bundle.ListTimeslotTransformTitle_tu12}" >
+                            <h:outputText value="#{item.tu12}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                </h:panelGroup>
+                <br />
+                <br />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

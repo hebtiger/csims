@@ -36,5 +36,9 @@
             <base-name>/resources/OtnNeInfo_Bundle</base-name>
             <var>otnNeInfo_Bundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/resources/TimeSlotTransform_Bundle</base-name>
+            <var>timeSlotTransform_Bundle</var>
+        </resource-bundle>
     </application>
 </faces-config>

@@ -5,24 +5,28 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-          <h:outputStylesheet name="css/jsfcrud.css"/>
-         
+            <h:outputStylesheet name="css/jsfcrud.css"/>
+
         </ui:define>
         <ui:define name="body">
-            
-        <h:link outcome="/imsUser/List" value="用户管理"/>
-        <br />
-        <h:link outcome="/userGroup/List" value="用户组管理"/>
-        <br />
-        <h:link outcome="/malfunctionRecord/List" value="故障记录"/>
-        <br />
-        <h:link outcome="/customerInfo/List" value="客户信息"/>
-        <br />
-        <h:link outcome="/otnServiceInfo/List" value="OTN业务端口信息"/>
-         <br />
-        <h:link outcome="/sparePart/List" value="备品备件"/>
-           <br />
-        <h:link outcome="/otnNeInfo/List" value="OTN网元信息"/>
+
+            <h:link outcome="/imsUser/List" value="用户管理"/>
+            <br />
+            <h:link outcome="/userGroup/List" value="用户组管理"/>
+            <br />
+            <h:link outcome="/malfunctionRecord/List" value="故障记录"/>
+            <br />
+            <h:link outcome="/customerInfo/List" value="客户信息"/>
+            <br />
+            <h:link outcome="/otnServiceInfo/List" value="OTN业务端口信息"/>
+            <br />
+            <h:link outcome="/sparePart/List" value="备品备件"/>
+            <br />
+            <h:link outcome="/otnNeInfo/List" value="OTN网元信息"/>
+                <br />
+            <h:link outcome="/timeslotTransform/List" value="时隙对照表"/>
+               <br />
+            <h:link outcome="/referenceInfo/wdmFrequency" value="波分频率表"/>
         </ui:define>
     </ui:composition>
 </html>

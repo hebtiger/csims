@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{timeSlotTransform_Bundle.EditTimeslotTransformTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{timeSlotTransform_Bundle.EditTimeslotTransformLabel_zte}" for="zte" />
+                    <h:inputText id="zte" value="#{timeslotTransformController.selected.zte}" title="#{timeSlotTransform_Bundle.EditTimeslotTransformTitle_zte}" required="true" requiredMessage="#{timeSlotTransform_Bundle.EditTimeslotTransformRequiredMessage_zte}"/>
+                    <h:outputLabel value="#{timeSlotTransform_Bundle.EditTimeslotTransformLabel_huawei}" for="huawei" />
+                    <h:inputText id="huawei" value="#{timeslotTransformController.selected.huawei}" title="#{timeSlotTransform_Bundle.EditTimeslotTransformTitle_huawei}" required="true" requiredMessage="#{timeSlotTransform_Bundle.EditTimeslotTransformRequiredMessage_huawei}"/>
+                    <h:outputLabel value="#{timeSlotTransform_Bundle.EditTimeslotTransformLabel_tug3}" for="tug3" />
+                    <h:inputText id="tug3" value="#{timeslotTransformController.selected.tug3}" title="#{timeSlotTransform_Bundle.EditTimeslotTransformTitle_tug3}" required="true" requiredMessage="#{timeSlotTransform_Bundle.EditTimeslotTransformRequiredMessage_tug3}"/>
+                    <h:outputLabel value="#{timeSlotTransform_Bundle.EditTimeslotTransformLabel_tug2}" for="tug2" />
+                    <h:inputText id="tug2" value="#{timeslotTransformController.selected.tug2}" title="#{timeSlotTransform_Bundle.EditTimeslotTransformTitle_tug2}" required="true" requiredMessage="#{timeSlotTransform_Bundle.EditTimeslotTransformRequiredMessage_tug2}"/>
+                    <h:outputLabel value="#{timeSlotTransform_Bundle.EditTimeslotTransformLabel_tu12}" for="tu12" />
+                    <h:inputText id="tu12" value="#{timeslotTransformController.selected.tu12}" title="#{timeSlotTransform_Bundle.EditTimeslotTransformTitle_tu12}" required="true" requiredMessage="#{timeSlotTransform_Bundle.EditTimeslotTransformRequiredMessage_tu12}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{timeslotTransformController.update}" value="#{timeSlotTransform_Bundle.EditTimeslotTransformSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{timeSlotTransform_Bundle.EditTimeslotTransformViewLink}"/>
+                <br />
+                <h:commandLink action="#{timeslotTransformController.prepareList}" value="#{timeSlotTransform_Bundle.EditTimeslotTransformShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{timeSlotTransform_Bundle.EditTimeslotTransformIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
